@@ -1,7 +1,9 @@
 
 <script>
 
-    let  path_genart = 'hi <a  href="" onclick="location.href=this.href+\'/genart\';return false;"> click here </a>';
+  //  let  path_genart = 'hi <a  href="./genart" onclick="location.href=this.href+\'/genart\';return false;"> click here </a>';
+
+    let  path_genart = 'hi <a  href="./genart" > click here </a>';
 
 </script>
 
