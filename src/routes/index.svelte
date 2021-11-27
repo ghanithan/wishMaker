@@ -3,7 +3,7 @@
 
   //  let  path_genart = 'hi <a  href="./genart" onclick="location.href=this.href+\'/genart\';return false;"> click here </a>';
 
-    let  path_genart = 'hi <a  href="./genart" > click here </a>';
+  //  let  path_genart = 'hi <a  href="./genart" > click here </a>';
 
 </script>
 
@@ -11,5 +11,6 @@
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-{@html path_genart} 
 
+
+<a  href="./genart" > click here </a>'
