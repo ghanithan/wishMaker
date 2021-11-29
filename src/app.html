@@ -13,7 +13,9 @@
 		<script id="register-worklet">
 			(async function (){
 				let baseUrl = window.location.protocol +'//' + window.location.host;
-			
+				if(window.location.host == "ghanithan.github.io"){
+					baseUrl = baseUrl + '/wishMaker';
+				}
 				if ('paintWorklet' in CSS) {
 					//alert("paint api supported!");
 					// Safari TP fix.
