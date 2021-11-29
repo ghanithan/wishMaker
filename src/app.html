@@ -4,10 +4,41 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="" />
 		<link rel="icon" href="/favicon.png" />
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%svelte.head%
 	</head>
 	<body>
 		<div id="svelte">%svelte.body%</div>
+		<script id="register-worklet">
+			(async function (){
+				let baseUrl = window.location.protocol +'//' + window.location.host;
+			
+				if ('paintWorklet' in CSS) {
+					//alert("paint api supported!");
+					// Safari TP fix.
+					// Now Safari only accepts source code as a string instead file path.
+					if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+						(async function() {
+						const response = await fetch('https://codepen.io/georgedoescode/pen/zYdJGbo.js');
+						const blob = await response.blob();
+						const reader = new FileReader();
+
+						reader.addEventListener('load', () => {
+							CSS.paintWorklet.addModule(reader.result);
+						});
+
+						reader.readAsText(blob);
+						})();
+					} else {
+						let circlesUrl = baseUrl + '/js/circles.js';
+						CSS.paintWorklet.addModule(circlesUrl);
+					}
+				}else{
+					alert("not supported.")
+				}
+			})();
+			
+		  </script>
 	</body>
 </html>

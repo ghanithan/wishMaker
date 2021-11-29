@@ -4,19 +4,21 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="" />
 		<link rel="icon" href="/favicon.png" />
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 
 		
 
-		<link rel="modulepreload" href="/_app/start-ff891037.js">
+		<link rel="modulepreload" href="/_app/start-437871e1.js">
 		<link rel="modulepreload" href="/_app/chunks/vendor-af0f2ef7.js">
 		<link rel="modulepreload" href="/_app/layout.svelte-39935a5a.js">
-		<link rel="modulepreload" href="/_app/pages/genart/index.svelte-db474604.js">
+		<link rel="modulepreload" href="/_app/pages/genart/index.svelte-ae25ed8b.js">
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/genart/index.svelte-6c1d2384.css">
 
 		<script type="module">
-			import { start } from "/_app/start-ff891037.js";
+			import { start } from "/_app/start-437871e1.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,7 +32,7 @@
 					error: null,
 					nodes: [
 						import("/_app/layout.svelte-39935a5a.js"),
-						import("/_app/pages/genart/index.svelte-db474604.js")
+						import("/_app/pages/genart/index.svelte-ae25ed8b.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -50,8 +52,41 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
 
+<div class="worklet-canvas svelte-11p6vh4"></div>
+
+
 
 			
 		</div>
+		<script id="register-worklet">
+			(async function (){
+				let baseUrl = window.location.protocol +'//' + window.location.host;
+			
+				if ('paintWorklet' in CSS) {
+					//alert("paint api supported!");
+					// Safari TP fix.
+					// Now Safari only accepts source code as a string instead file path.
+					if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+						(async function() {
+						const response = await fetch('https://codepen.io/georgedoescode/pen/zYdJGbo.js');
+						const blob = await response.blob();
+						const reader = new FileReader();
+
+						reader.addEventListener('load', () => {
+							CSS.paintWorklet.addModule(reader.result);
+						});
+
+						reader.readAsText(blob);
+						})();
+					} else {
+						let circlesUrl = baseUrl + '/js/circles.js';
+						CSS.paintWorklet.addModule(circlesUrl);
+					}
+				}else{
+					alert("not supported.")
+				}
+			})();
+			
+		  </script>
 	</body>
 </html>
