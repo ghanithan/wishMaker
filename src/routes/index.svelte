@@ -11,5 +11,14 @@
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-
+<p>
+  For generative art 
 <a  href="./genart" > click here </a>
+
+</p>
+
+<p>
+  For calendar
+<a  href="./calendar" > click here </a>
+
+</p>
