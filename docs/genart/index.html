@@ -10,15 +10,15 @@
 
 		
 
-		<link rel="modulepreload" href="/wishMaker/_app/start-cef25786.js">
-		<link rel="modulepreload" href="/wishMaker/_app/chunks/vendor-af0f2ef7.js">
-		<link rel="modulepreload" href="/wishMaker/_app/layout.svelte-39935a5a.js">
-		<link rel="modulepreload" href="/wishMaker/_app/pages/genart/index.svelte-ae25ed8b.js">
+		<link rel="modulepreload" href="/wishMaker/_app/start-0eec766b.js">
+		<link rel="modulepreload" href="/wishMaker/_app/chunks/vendor-cd831ead.js">
+		<link rel="modulepreload" href="/wishMaker/_app/layout.svelte-f02ae38f.js">
+		<link rel="modulepreload" href="/wishMaker/_app/pages/genart/index.svelte-051ea3cf.js">
 		<link rel="stylesheet" href="/wishMaker/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/wishMaker/_app/assets/pages/genart/index.svelte-6c1d2384.css">
 
 		<script type="module">
-			import { start } from "/wishMaker/_app/start-cef25786.js";
+			import { start } from "/wishMaker/_app/start-0eec766b.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/wishMaker","assets":""},
@@ -31,8 +31,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/wishMaker/_app/layout.svelte-39935a5a.js"),
-						import("/wishMaker/_app/pages/genart/index.svelte-ae25ed8b.js")
+						import("/wishMaker/_app/layout.svelte-f02ae38f.js"),
+						import("/wishMaker/_app/pages/genart/index.svelte-051ea3cf.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -70,7 +70,8 @@
 					// Now Safari only accepts source code as a string instead file path.
 					if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
 						(async function() {
-						const response = await fetch('https://codepen.io/georgedoescode/pen/zYdJGbo.js');
+						let circlesUrl = baseUrl + '/js/circles.js';
+						const response = await fetch(circlesUrl);
 						const blob = await response.blob();
 						const reader = new FileReader();
 
@@ -82,7 +83,7 @@
 						})();
 					} else {
 						let circlesUrl = baseUrl + '/js/circles.js';
-						alert(circlesUrl);
+						//alert(circlesUrl);
 						CSS.paintWorklet.addModule(circlesUrl);
 					}
 				}else{
