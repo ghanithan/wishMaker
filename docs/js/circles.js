@@ -1,5 +1,5 @@
-import random from "https://cdn.skypack.dev/random";
-import seedrandom from "https://cdn.skypack.dev/seedrandom";
+//import random from "https://cdn.skypack.dev/random";
+//import seedrandom from "https://cdn.skypack.dev/seedrandom";
 
 class Worklet {
   paint(ctx, geometry, props) {
